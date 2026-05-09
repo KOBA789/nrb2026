@@ -1,0 +1,13 @@
+{
+  "id": "b4ddfc6c-8b4b-4d99-a299-4a8919debcf4",
+  "name": "ISUNARABE 合同演習2026",
+  "version": "0.0.1",
+  "invocation": {
+    "report": { "format": "scorejson" }
+  },
+  "instances": [
+    { "private_ip": "192.168.0.11" },
+    { "private_ip": "192.168.0.12" },
+    { "private_ip": "192.168.0.13" }
+  ]
+}

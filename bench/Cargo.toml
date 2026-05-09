@@ -1,0 +1,28 @@
+[package]
+name = "bench"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "bench"
+path = "src/main.rs"
+
+[dependencies]
+seed-data = { path = "../seed-data" }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "time", "sync", "net", "signal"] }
+# reqwest は default-features=false で gzip feature を無効化。bench は image body を
+# byte 単位で SHA256 比較するため、auto-decompression が混入してはならない。
+reqwest = { version = "0.12", default-features = false, features = ["http2", "json"] }
+axum = "0.7"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "1", features = ["v4", "serde"] }
+chrono = { version = "0.4", default-features = false, features = ["serde", "clock"] }
+sha2 = "0.10"
+base64 = "0.22"
+hex = "0.4"
+rand = "0.8"
+# CancellationToken は load phase の actor shutdown で使う。
+# tokio 単体だと watch::channel<bool> 等で代替可能だが冗長になるため、軽量 dep として追加。
+tokio-util = { version = "0.7", default-features = false }

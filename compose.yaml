@@ -1,0 +1,31 @@
+# ローカル開発ループ用の MySQL。webapp/bench は host 上で `cargo run` する想定。
+# 詳細: docs/authoring/dev-loop.md
+#
+# 認証は production AMI と揃えて mysql_native_password を強制する
+# (docs/authoring/platform.md § 2)。
+
+services:
+  mysql:
+    image: mysql:8.0
+    command:
+      - --default-authentication-plugin=mysql_native_password
+    ports:
+      # 3307 にずらすのは、ホストに直接 mysqld が居る環境向けの退避。production AMI 側
+      # (mitamae/cookbooks/mysql) は 3306 のまま。dev で webapp を動かす時は
+      # DATABASE_URL を 3307 に向ける (docs/authoring/dev-loop.md)。
+      - "127.0.0.1:3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: nrb2026
+      MYSQL_USER: isucon
+      MYSQL_PASSWORD: isucon
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uisucon", "-pisucon"]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+
+volumes:
+  mysql_data:

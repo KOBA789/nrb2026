@@ -1,0 +1,7 @@
+/build/
+**/target/
+
+# 生成物 (scripts/build.sh が生成する seed と DL する fixture zip / 展開先)
+/webapp/sql/seed.sql
+/bench/fixtures/initial.zip
+/bench/fixtures/images/

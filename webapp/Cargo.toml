@@ -1,0 +1,25 @@
+[package]
+name = "webapp"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "webapp"
+path = "src/main.rs"
+
+[dependencies]
+axum = { version = "0.7", features = ["macros"] }
+tower-http = { version = "0.6", features = ["fs"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "net", "signal", "process", "time", "sync", "fs"] }
+sqlx = { version = "0.8", default-features = false, features = ["runtime-tokio", "mysql", "chrono", "uuid"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = { version = "0.4", default-features = false, features = ["serde", "clock"] }
+uuid = { version = "1", features = ["v4", "serde"] }
+reqwest = { version = "0.12", default-features = false, features = ["http2", "json"] }
+url = "2"
+sha2 = "0.10"
+base64 = "0.22"
+hex = "0.4"
+rand = "0.8"

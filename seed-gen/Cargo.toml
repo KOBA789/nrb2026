@@ -1,0 +1,15 @@
+[package]
+name = "seed-gen"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "seed-gen"
+path = "src/main.rs"
+
+[dependencies]
+seed-data = { path = "../seed-data" }
+rand = "0.8"
+hex = "0.4"
+uuid = { version = "1", features = ["v4", "v5"] }

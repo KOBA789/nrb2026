@@ -1,0 +1,16 @@
+[workspace]
+# nrb2026 作問インフラ用 workspace。webapp は配布物として self-contained
+# (path dep を持たない) でなければならないため、auto-discovery から
+# 明示的に exclude する。AMI 上では `/home/isucon/webapp/` だけが配られて
+# 単体 crate として `cargo run --bin webapp` される。
+members = [
+    "bench",
+    "seed-data",
+    "seed-gen",
+]
+exclude = [
+    "webapp",
+    "build",
+    "mitamae",
+]
+resolver = "2"
