@@ -1,7 +1,6 @@
 # ISUNARABE 合同演習2026 作問記 — AI agent 主導で作問する 5 日間
 
-このリポジトリは ISUNARABE 合同演習2026 の作問物 (webapp + benchmarker + AMI/CFn/bench.sh
-+ problem.json) を収めたものである。5 日間の作業記録をここに残す。
+このリポジトリは ISUNARABE 合同演習2026 の作問物 (webapp + benchmarker + AMI/CFn/bench.sh + problem.json) を収めたものである。5 日間の作業記録をここに残す。
 
 作問は 2026-05-05 〜 2026-05-09 (本番当日) の 5 日間で、ほぼすべての作業を AI agent 経由
 で進めた。本記事の引用は当時の Claude Code セッションログ (`~/.claude/projects/`) と
